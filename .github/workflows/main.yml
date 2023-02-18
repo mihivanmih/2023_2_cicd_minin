@@ -1,4 +1,4 @@
-name: Tets React App
+name: Deploy React App
 on: push
 jobs:
   test:
@@ -10,3 +10,18 @@ jobs:
         run: npm ci
       - name: Test application
         run: npm run test
+      - name: Test lint
+        run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install dependecies
+        run: npm ci
+      - name: Test application
+        run: npm run test
+      - name: Test lint
+        run: npm run lint
+      - name: Build application
+        run: npm run build
