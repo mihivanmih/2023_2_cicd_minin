@@ -3,11 +3,50 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/workflows/*'
+#    paths-ignore:
+#      - '.github/workflows/*'
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependecies
+        run: npm ci
+      - name: Test application
+        run: npm run test
+  lint:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependecies
+        run: npm ci
+      - name: Test lint
+        run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependecies
+        run: npm ci
+      - name: Build application
+        run: npm run build
