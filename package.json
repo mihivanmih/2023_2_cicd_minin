@@ -18,9 +18,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npx eslint ./src",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 40123",
     "build-storybook": "build-storybook -s public",
-    "loki:ci": "npx loki test --config ./storybook-static"
+    "loki:ci": "npx loki test --chromeDockerWithoutSeccomp --config ./storybook-static",
+    "loki:ci:test": "npx loki test --port 40123",
+    "loki:ok": "loki approve"
   },
   "eslintConfig": {
     "extends": [
