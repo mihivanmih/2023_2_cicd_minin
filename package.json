@@ -22,7 +22,7 @@
     "build-storybook": "build-storybook -s public",
     "loki": "npx loki update",
     "lokiTest": "npx loki test",
-    "loki:ci:local": "npx loki update --requireReference --reactUri file:./storybook-static",
+    "loki:ci:local": "npx loki test --requireReference --reactUri file:./storybook-static",
     "loki:ci": "npx loki test --reactUri file:./storybook-static"
   },
   "eslintConfig": {
