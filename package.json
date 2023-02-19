@@ -20,7 +20,7 @@
     "lint": "npx eslint ./src",
     "storybook": "start-storybook -p 6060",
     "build-storybook": "build-storybook -s public",
-    "loki:ci": "npx loki update --requireReference --reactUri file:./storybook-static",
+    "loki:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "loki:ok": "loki approve"
   },
   "eslintConfig": {
