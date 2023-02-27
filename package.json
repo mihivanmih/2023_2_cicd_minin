@@ -19,11 +19,15 @@
     "eject": "react-scripts eject",
     "lint": "npx eslint ./src",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
+
     "loki": "npx loki update",
     "lokiTest": "npx loki test",
-    "loki:ci:local": "npx loki test --requireReference --reactUri file:./storybook-static",
-    "loki:ci": "npx loki test --reactUri file:./storybook-static"
+    "test:ui:ok": "npx loki approve",
+
+    "build-storybook": "build-storybook -s public",
+    "loki:ci:local": "npx loki --requireReference --reactUri file:./storybook-static",
+
+    "loki:ci": "npx loki --reactUri file:./storybook-static"
   },
   "eslintConfig": {
     "extends": [
